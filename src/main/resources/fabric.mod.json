@@ -3,14 +3,14 @@
   "id": "modid",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Skyblock",
+  "description": "I need more java experience so im gonna remake some of the items from hypixel skyblock",
   "authors": [
-    "Me!"
+    "imapotatoes11"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://rickrollredirect.github.io",
+    "sources": "https://github.com/imapotatoes11/hypixel-skyblock"
   },
 
   "license": "CC0-1.0",
@@ -19,7 +19,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "net.imapotatoes11.skyblock.Skyblock"
     ]
   },
   "mixins": [
