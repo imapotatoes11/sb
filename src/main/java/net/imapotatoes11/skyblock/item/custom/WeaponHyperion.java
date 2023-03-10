@@ -30,9 +30,9 @@ public class WeaponHyperion extends Item {
                 false
         );
         if(hitResult.getType()== HitResult.Type.BLOCK)
-            user.sendMessage((Text) new TranslatableTextContent("§cThere are blocks in the way!"));
+            user.sendMessage(Text.of("§cThere are blocks in the way!"));
 
-        Util.teleport(user);
+        Util.teleport(user,10);
 
         world.createExplosion(
                 user,

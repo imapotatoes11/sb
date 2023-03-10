@@ -1,6 +1,7 @@
 package net.imapotatoes11.skyblock;
 
 import net.fabricmc.api.ModInitializer;
+import net.imapotatoes11.skyblock.item.ModItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,5 +20,6 @@ public class Skyblock implements ModInitializer {
 		// Proceed with mild caution.
 
 		LOGGER.info("Init hypixel-skyblock");
+		ModItems.registerModItems();
 	}
 }
