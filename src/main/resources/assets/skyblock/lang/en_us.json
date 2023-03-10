@@ -1,4 +1,7 @@
 {
   "item.skyblock.hyperion": "§6Hyperion",
-  "item.skyblock.aspect_of_the_end": "§9Aspect of The End"
+  "item.skyblock.aspect_of_the_end": "§9Aspect of the End",
+  "item.skyblock.aspect_of_the_void": "§5Aspect of the Void",
+  "item.skyblock.juju_shortbow": "§5Juju Shortbow",
+  "item.skyblock.terminator_bow": "§6Terminator"
 }

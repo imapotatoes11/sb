@@ -4,8 +4,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.imapotatoes11.skyblock.Skyblock;
-import net.imapotatoes11.skyblock.item.custom.WeaponAOTE;
-import net.imapotatoes11.skyblock.item.custom.WeaponHyperion;
+import net.imapotatoes11.skyblock.item.custom.*;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -20,6 +19,10 @@ public class ModItems {
     public static final Item HYPERION=registerItem("hyperion",new WeaponHyperion(new FabricItemSettings()));
 
     public static final Item AOTE=registerItem("aspect_of_the_end",new WeaponAOTE(new FabricItemSettings()));
+    public static final Item AOTV=registerItem("aspect_of_the_void",new WeaponAspectOfTheVoid(new FabricItemSettings()));
+
+    public static final Item JUJU_BOW=registerItem("juju_shortbow",new RangedWeaponJuju(new FabricItemSettings()));
+    public static final Item TERMINATOR_BOW=registerItem("terminator_bow",new RangedWeaponTerminator(new FabricItemSettings()));
 
 
     private static SwordItem registerSwordItem(String name, SwordItem item){
