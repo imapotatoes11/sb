@@ -1,7 +1,11 @@
 {
   "item.skyblock.hyperion": "§6Hyperion",
+  "item.skyblock.scylla": "§6Scylla",
+  "item.skyblock.astrea": "§6Astraea",
+  "item.skyblock.valkyrie": "§6Valkyrie",
   "item.skyblock.aspect_of_the_end": "§9Aspect of the End",
   "item.skyblock.aspect_of_the_void": "§5Aspect of the Void",
   "item.skyblock.juju_shortbow": "§5Juju Shortbow",
-  "item.skyblock.terminator_bow": "§6Terminator"
+  "item.skyblock.terminator_bow": "§6Terminator",
+  "item.skyblock.silent_death": "§5Silent Death"
 }

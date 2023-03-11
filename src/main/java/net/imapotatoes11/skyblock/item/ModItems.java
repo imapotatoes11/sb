@@ -17,6 +17,10 @@ public class ModItems {
     // https://fabricmc.net/2022/11/24/1193.html
 
     public static final Item HYPERION=registerItem("hyperion",new WeaponHyperion(new FabricItemSettings()));
+    public static final Item SCYLLA=registerItem("scylla",new WeaponHyperion(new FabricItemSettings()));
+    public static final Item ASTREA=registerItem("astrea",new WeaponHyperion(new FabricItemSettings()));
+    public static final Item VALKYRIE=registerItem("valkyrie",new WeaponHyperion(new FabricItemSettings()));
+    public static final Item SILENT_DEATH=registerItem("silent_death",new WeaponSilentDeath(new FabricItemSettings()));
 
     public static final Item AOTE=registerItem("aspect_of_the_end",new WeaponAOTE(new FabricItemSettings()));
     public static final Item AOTV=registerItem("aspect_of_the_void",new WeaponAspectOfTheVoid(new FabricItemSettings()));
