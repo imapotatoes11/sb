@@ -29,7 +29,7 @@ public class WeaponSilentDeath extends Item {
                 user.sendMessage(Text.of("smth happening"),false);
                 Entity entity=world.getClosestEntity(null, TargetPredicate.DEFAULT, null,
                         hitResult.getPos().x, hitResult.getPos().y, hitResult.getPos().z);
-                Vec3d vec3d=entity.getRotationVector().multiply(-2);
+                Vec3d vec3d=entity.getRotationVector();
                 user.teleport(vec3d.x, vec3d.y, vec3d.z);
         }
         return super.use(world, user, hand);
