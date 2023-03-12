@@ -29,6 +29,11 @@ public class ModItems {
     public static final Item TERMINATOR_BOW=registerItem("terminator_bow",new RangedWeaponTerminator(new FabricItemSettings()));
 
 
+    // Tools
+
+    public static final Item GRAPPLING_HOOK=registerItem("grappling_hook",new ToolGrapplingHook(new FabricItemSettings()));
+
+
     private static SwordItem registerSwordItem(String name, SwordItem item){
         return Registry.register(Registries.ITEM,new Identifier(Skyblock.MOD_ID,name),item);
     }
