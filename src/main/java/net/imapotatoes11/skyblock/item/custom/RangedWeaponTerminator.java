@@ -14,6 +14,18 @@ public class RangedWeaponTerminator extends Item {
         super(settings);
     }
 
+    private static ArrowEntity setupArrow(World world, PlayerEntity user, int direction){
+        ArrowEntity arrow = new ArrowEntity(EntityType.ARROW, world);
+//        arrow.teleport(
+//                user.getX(),
+//                user.getY()+1.6,
+//                user.getZ()
+//        );
+        _ = (user.isSneaking()) ? arrow.teleport(user.getX(),user.getY()+1.3, user.getZ()):
+                arrow.teleport(user.getX(),user.getY()+1.6,user.getZ());
+        return null;
+    }
+
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ArrowEntity middleArrow = new ArrowEntity(EntityType.ARROW, world);

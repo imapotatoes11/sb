@@ -32,6 +32,7 @@ public class ModItems {
     // Tools
 
     public static final Item GRAPPLING_HOOK=registerItem("grappling_hook",new ToolGrapplingHook(new FabricItemSettings()));
+    public static final Item ROGUE_SWORD=registerItem("rogue_sword", new WeaponRogueSword(new FabricItemSettings()));
 
 
     private static SwordItem registerSwordItem(String name, SwordItem item){
