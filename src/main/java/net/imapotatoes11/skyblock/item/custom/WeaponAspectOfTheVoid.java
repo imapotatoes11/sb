@@ -39,7 +39,7 @@ public class WeaponAspectOfTheVoid extends Item {
                     if (b1 && b2){
                         user.teleport(
                                 hitResult.getPos().getX(),
-                                hitResult.getPos().getY(),
+                                hitResult.getPos().getY()+1,
                                 hitResult.getPos().getZ()
                         );
                     }
