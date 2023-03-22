@@ -50,7 +50,7 @@ public class WeaponAspectOfTheVoid extends Item {
                 case BLOCK:
                     user.sendMessage(Text.of("§cThere are blocks in the way!"));
             }
-            Util.teleport(user,12);
+            Util.teleport(user,TELEPORT_RANGE);
         }
         return super.use(world, user, hand);
     }
