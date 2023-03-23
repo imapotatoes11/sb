@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "skyblock:item/fire_veil_wand"
+  }
+}

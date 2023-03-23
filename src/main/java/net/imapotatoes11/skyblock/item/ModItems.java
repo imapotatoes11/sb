@@ -28,6 +28,9 @@ public class ModItems {
     public static final Item JUJU_BOW=registerItem("juju_shortbow",new RangedWeaponJuju(new FabricItemSettings()));
     public static final Item TERMINATOR_BOW=registerItem("terminator_bow",new RangedWeaponTerminator(new FabricItemSettings()));
 
+    public static final Item FIRE_VEIL_WAND=registerItem("fire_veil_wand",new WeaponFireVeilWand(new FabricItemSettings()));
+    public static final Item FIRE_VEIL_WAND_BIG=registerItem("fire_veil_wand_big",new WeaponFireVeilWandBig(new FabricItemSettings()));
+
 
     // Tools
 
