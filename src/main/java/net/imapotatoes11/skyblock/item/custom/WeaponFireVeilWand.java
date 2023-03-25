@@ -60,6 +60,8 @@ public class WeaponFireVeilWand extends Item {
             for (Entity listEntity : entities) {
                 listEntity.damage(new DamageSource(entity.getName().getString()), 10);
             }
+        } else if (isOn) {
+            isOn = false;
         }
         super.inventoryTick(stack, world, entity, slot, selected);
     }

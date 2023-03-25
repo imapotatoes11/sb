@@ -59,7 +59,10 @@ public class WeaponFireVeilWandBig extends Item {
                 if (listEntity.getType()!= EntityType.ITEM)
                     listEntity.damage(new DamageSource(entity.getName().getString()), 10);
             }
+        } else if (isOn) {
+            isOn = false;
         }
         super.inventoryTick(stack, world, entity, slot, selected);
     }
+
 }

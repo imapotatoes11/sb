@@ -46,17 +46,54 @@ public class ModItems {
         return Registry.register(Registries.ITEM,new Identifier(Skyblock.MOD_ID,name),item);
     }
 
-    public static ItemGroup ITEM_GROUP;
+    public static final ItemGroup SB_ITEMGROUP = FabricItemGroup.builder(
+                    new Identifier("skyblock", "skyblock_items")
+            )
+            .displayName(Text.literal("Skyblock"))
+            .icon(() -> new ItemStack(HYPERION))
+            .entries(((enabledFeatures, entries, operatorEnabled) -> {
+                for (Item entry : new Item[] {
+                        HYPERION,
+                        VALKYRIE,
+                        SCYLLA,
+                        ASTREA,
+                        JUJU_BOW,
+                        TERMINATOR_BOW,
+                        AOTE,
+                        AOTV,
+                        ROGUE_SWORD,
+                        GRAPPLING_HOOK,
+                        SILENT_DEATH,
+                        FIRE_VEIL_WAND,
+                        FIRE_VEIL_WAND_BIG
+                }) {
+                    entries.add(new ItemStack(entry));
+                }
+            }))
+            .build();
 
     public static void registerModItems() {
-        Skyblock.LOGGER.info("Registering Mod Items for "+Skyblock.MOD_ID+"... ");
-//        ITEM_GROUP = FabricItemGroup.builder(new Identifier("example","test_group"))
-//                .displayName(Text.literal("Exaple Item Group"))
-//                .icon(()->new ItemStack(Items.DIAMOND))
-//                .entries((enabledFeatures,entries,operatorEnabled)->{
-//                    entries.add(Items.DIAMOND);
-//                })
-//                .build();
-//        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries->entries.add());
+        Skyblock.LOGGER.info("Registered Mod Items for "+Skyblock.MOD_ID+"... ");
+
+//        for (Item item : new Item[] {
+//                HYPERION,
+//                VALKYRIE,
+//                SCYLLA,
+//                ASTREA,
+//                JUJU_BOW,
+//                TERMINATOR_BOW,
+//                AOTE,
+//                AOTV,
+//                ROGUE_SWORD,
+//                GRAPPLING_HOOK,
+//                SILENT_DEATH,
+//                FIRE_VEIL_WAND,
+//                FIRE_VEIL_WAND_BIG
+//        }) {
+//            ItemGroupEvents.modifyEntriesEvent(SB_ITEMGROUP)
+//                    .register(entries -> entries.add(new ItemStack(item)));
+//        }
+
+        Skyblock.LOGGER.info("Successfully loaded ItemGroup skyblock_items");
     }
 }
