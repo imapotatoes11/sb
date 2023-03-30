@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "D",
+    "S"
+  ],
+  "key": {
+    "D": {"item": "minecraft:stick"},
+    "S": {"item": "minecraft:stick"}
+  },
+  "result": {
+    "item": "skyblock:aspect_of_the_void"
+  }
+}
