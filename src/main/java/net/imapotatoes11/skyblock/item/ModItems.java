@@ -5,6 +5,8 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.imapotatoes11.skyblock.Skyblock;
 import net.imapotatoes11.skyblock.item.custom.*;
+import net.imapotatoes11.skyblock.item.custom.util.Colors;
+import net.imapotatoes11.skyblock.item.custom.util.TooltipStats;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -25,7 +27,23 @@ public class ModItems {
     public static final Item AOTE=registerItem("aspect_of_the_end",new WeaponAOTE(new FabricItemSettings()));
     public static final Item AOTV=registerItem("aspect_of_the_void",new WeaponAspectOfTheVoid(new FabricItemSettings()));
 
-    public static final Item JUJU_BOW=registerItem("juju_shortbow",new RangedWeaponJuju(new FabricItemSettings()));
+    public static final Item JUJU_BOW=registerItem("juju_shortbow",
+            new RangedWeaponJuju(new FabricItemSettings(),
+                    new TooltipStats("BOW", true, true, "MYTHIC", Colors.LIGHT_PURPLE)
+                            .add("damage",500)
+                            .add("cc",100)
+                            .add("cd",1000)
+                            .add("strength",200)
+                            .add("health",100)
+                            .add("true_defense",250)
+                            .add("pristine",500)
+                            .add("mining_speed",1250)
+                            .addEnchant("Growth VII", Colors.GOLD)
+                            .addEnchant("Protection VII", Colors.GOLD)
+                            .addEnchant("Efficiency V", Colors.BLUE)
+                            .addEnchant("TheLastEnchantIsntRendering XI", Colors.GOLD)
+                            .addEnchant("mm yes temp fix", Colors.RED)
+            ));
     public static final Item TERMINATOR_BOW=registerItem("terminator_bow",new RangedWeaponTerminator(new FabricItemSettings()));
 
     public static final Item FIRE_VEIL_WAND=registerItem("fire_veil_wand",new WeaponFireVeilWand(new FabricItemSettings()));
