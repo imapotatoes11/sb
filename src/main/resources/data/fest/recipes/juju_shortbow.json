@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "D",
+    "S"
+  ],
+  "key": {
+    "D": {"item": "minecraft:dirt"},
+    "S": {"item": "minecraft:bow"}
+  },
+  "result": {
+    "item": "skyblock:juju_shortbow"
+  }
+}
