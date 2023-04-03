@@ -1,5 +1,6 @@
 package net.imapotatoes11.skyblock.item.custom;
 
+import net.imapotatoes11.skyblock.item.custom.util.Colors;
 import net.imapotatoes11.skyblock.item.custom.util.TooltipStats;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EntityType;
@@ -46,12 +47,6 @@ public class RangedWeaponJuju extends Item {
         arrowEntity.addVelocity(user.getRotationVector().multiply(5));
 
         world.spawnEntity(arrowEntity);
-
-        String[] exportedText = tooltipStats.export();
-        for (String line: exportedText){
-            user.sendMessage(Text.of(line));
-        }
-
         return super.use(world, user, hand);
     }
 
@@ -62,6 +57,9 @@ public class RangedWeaponJuju extends Item {
             if (Objects.equals(line,"null")) continue;
             if (Objects.equals(line,"add_details_here")){
                 // add item info here
+                tooltip.add(Text.of("§"+ Colors.DARK_PURPLE+"Shortbow: Instantly Shoots"));
+                tooltip.add(Text.of("§"+Colors.GRAY+"Hits §"+Colors.RED+"3§"+Colors.GRAY+" mobs on impact."));
+                tooltip.add(Text.of("§"+Colors.GRAY+"Cannot damage endermen."));
                 continue;
             }
             tooltip.add(Text.of(line));

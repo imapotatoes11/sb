@@ -1,18 +1,28 @@
 package net.imapotatoes11.skyblock.item.custom;
 
+import net.imapotatoes11.skyblock.item.custom.util.Colors;
+import net.imapotatoes11.skyblock.item.custom.util.TooltipStats;
 import net.imapotatoes11.skyblock.item.custom.util.Util;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
+import java.util.Objects;
 
 public class RangedWeaponTerminator extends Item {
-    public RangedWeaponTerminator(Settings settings){
+    public TooltipStats tooltipStats;
+    public RangedWeaponTerminator(Settings settings, TooltipStats tooltipStats){
         super(settings);
+        this.tooltipStats=tooltipStats;
     }
 
     private static ArrowEntity setupArrow(World world, PlayerEntity user, int direction){
@@ -100,5 +110,32 @@ public class RangedWeaponTerminator extends Item {
         world.spawnEntity(leftArrow);
         world.spawnEntity(rightArrow);
         return super.use(world, user, hand);
+    }
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        String[] exportedText = tooltipStats.export();
+        for (String line: exportedText){
+            if (Objects.equals(line,"null")) continue;
+            if (Objects.equals(line,"add_details_here")){
+                // add item info here
+                tooltip.add(Text.of("§"+ Colors.GOLD+"Shortbow: Instantly Shoots!"));
+                tooltip.add(Text.of("§"+Colors.GRAY+"Shoots §"+Colors.AQUA+"3 §"+Colors.GRAY+"arrows at once."));
+                tooltip.add(Text.of("§"+Colors.GRAY+"Cannot damage endermen."));
+                tooltip.add(Text.of(""));
+                tooltip.add(Text.of("§"+Colors.RED+"Divides your §"+Colors.BLUE+"Crit Chance §"+Colors.RED+"by 4!"));
+                tooltip.add(Text.of(""));
+                tooltip.add(Text.of("§"+ Colors.GOLD+"Ability: Salvation "+"§"+Colors.YELLOW+"RIGHT CLICK"));
+                tooltip.add(Text.of("§"+Colors.GRAY+"Can be casted after landing §"+Colors.GOLD+"3 §"+Colors.GRAY+"hits."));
+                tooltip.add(Text.of("§"+Colors.GRAY+"Shoot a beam, penetrating up"));
+                tooltip.add(Text.of("§"+Colors.GRAY+"to §"+Colors.YELLOW+"5 §"+Colors.GRAY+"foes and dealing §"+Colors.RED+"2x"));
+                tooltip.add(Text.of("§"+Colors.GRAY+"the damage an arrow would."));
+                tooltip.add(Text.of("§"+Colors.GRAY+"The beam always crits."));
+                tooltip.add(Text.of(TooltipStats.manaCost(0).replaceFirst("Mana","Soulflow")));
+                tooltip.add(Text.of("§"+Colors.DARK_GRAY+"Cooldown: §"+Colors.GREEN+"2s"));
+                continue;
+            }
+            tooltip.add(Text.of(line));
+        }
+        super.appendTooltip(stack, world, tooltip, context);
     }
 }

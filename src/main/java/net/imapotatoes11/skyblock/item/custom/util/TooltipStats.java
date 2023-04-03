@@ -48,6 +48,7 @@ public class TooltipStats {
     public String RARITY = "LEGENDARY";
     public String RARITY_COLOR = Colors.GOLD;
     public ArrayList<String> ENCHANTS = new ArrayList<String>();
+    public boolean IS_REFORGABLE=true;
     public TooltipStats(){}
     public TooltipStats(String weaponType, boolean isDungeonWeapon, boolean isRecombed, String rarity, String rarityColor){
         WEAPON_TYPE=weaponType;
@@ -56,9 +57,21 @@ public class TooltipStats {
         RARITY=rarity;
         RARITY_COLOR=rarityColor;
     }
+    public TooltipStats(String weaponType, boolean isDungeonWeapon, boolean isRecombed, String rarity, String rarityColor, boolean isReforgable){
+        WEAPON_TYPE=weaponType;
+        IS_DUNGEON=isDungeonWeapon;
+        IS_RECOMBED=isRecombed;
+        RARITY=rarity;
+        RARITY_COLOR=rarityColor;
+        IS_REFORGABLE=isReforgable;
+    }
     private String formatNumber(int n){
         DecimalFormat formatter = new DecimalFormat("#,###.##");
         return formatter.format(n);
+    }
+
+    public static String manaCost(int amt){
+        return "§"+Colors.DARK_GRAY+"Mana Cost: §"+Colors.DARK_AQUA+amt;
     }
 
     private String formatLine(String label, String color, int value, boolean addPercent){
@@ -105,28 +118,33 @@ public class TooltipStats {
         a.add(formatLine("Vitality", "a", VITALITY, false));
         a.add(formatLine("Mending", "a", MENDING, false));
 
-        a.add("");
+        if (!ENCHANTS.isEmpty())
+            a.add("");
 
         // enchants
         // TODO: the last enchant doesn't render on tooltip???
 //        String[] enchants=ENCHANTS.toArray(String[]::new);
-        String lastEnchant = (ENCHANTS.size() % 2 != 0) ? ENCHANTS.get(ENCHANTS.size()-1) : "null";
-        if (!Objects.equals(lastEnchant, "null")) ENCHANTS.remove(ENCHANTS.size()-1);
+//        String lastEnchant = (ENCHANTS.size() % 2 != 0) ? ENCHANTS.get(ENCHANTS.size()-1) : "null";
+//        if (!Objects.equals(lastEnchant, "null")) ENCHANTS.remove(ENCHANTS.size()-1);
+        if (ENCHANTS.size() % 2 != 0) ENCHANTS.add("");
 
         String[] enchants = ENCHANTS.toArray(String[]::new);
         for (int i=0;i<enchants.length-1; i+=2){
             a.add(enchants[i]+", "+enchants[i+1]);
         }
         // last enchantment
-        a.add(lastEnchant);
+//        a.add(lastEnchant);
 
-        a.add("");
+        if (!ENCHANTS.isEmpty())
+            a.add("");
 
         // item details
         a.add("add_details_here");
 
 
         a.add("");
+
+        if (IS_REFORGABLE) a.add("§"+Colors.DARK_GRAY+"This item can be reforged!");
 
         String obf = "§" + Colors.OBFUSCATE + "-" + "§r§" + RARITY_COLOR;
         a.add( "§" + RARITY_COLOR + ((IS_RECOMBED) ? obf + " " : " ") + RARITY + ((IS_DUNGEON) ? " DUNGEON " : " ") + WEAPON_TYPE + " " + ((IS_RECOMBED) ? obf + " " : ""));
