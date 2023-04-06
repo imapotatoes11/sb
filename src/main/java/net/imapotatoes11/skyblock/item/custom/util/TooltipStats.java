@@ -70,8 +70,12 @@ public class TooltipStats {
         return formatter.format(n);
     }
 
-    public static String manaCost(int amt){
+    public static String manaCost(double amt){
         return "§"+Colors.DARK_GRAY+"Mana Cost: §"+Colors.DARK_AQUA+amt;
+    }
+
+    public static String cooldown(double amt){
+        return "§"+Colors.DARK_GRAY+"Cooldown: §"+Colors.GREEN+amt+"s";
     }
 
     private String formatLine(String label, String color, int value, boolean addPercent){
@@ -121,11 +125,6 @@ public class TooltipStats {
         if (!ENCHANTS.isEmpty())
             a.add("");
 
-        // enchants
-        // TODO: the last enchant doesn't render on tooltip???
-//        String[] enchants=ENCHANTS.toArray(String[]::new);
-//        String lastEnchant = (ENCHANTS.size() % 2 != 0) ? ENCHANTS.get(ENCHANTS.size()-1) : "null";
-//        if (!Objects.equals(lastEnchant, "null")) ENCHANTS.remove(ENCHANTS.size()-1);
         if (ENCHANTS.size() % 2 != 0) ENCHANTS.add("");
 
         String[] enchants = ENCHANTS.toArray(String[]::new);
