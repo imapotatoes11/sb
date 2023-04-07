@@ -19,10 +19,15 @@ import java.util.List;
 import java.util.Objects;
 
 public class RangedWeaponTerminator extends Item {
-    public TooltipStats tooltipStats;
-    public RangedWeaponTerminator(Settings settings, TooltipStats tooltipStats){
+    public TooltipStats tooltipStats = new TooltipStats("BOW", false, false, "LEGENDARY", Colors.GOLD)
+            .add("damage",310)
+            .add("strength",50)
+            .add("cd",250)
+            .add("atkspd",40)
+            .addEnchant("Power VII", Colors.GOLD)
+            .addEnchant("Overload VII", Colors.GOLD);
+    public RangedWeaponTerminator(Settings settings){
         super(settings);
-        this.tooltipStats=tooltipStats;
     }
 
     private static ArrowEntity setupArrow(World world, PlayerEntity user, int direction){

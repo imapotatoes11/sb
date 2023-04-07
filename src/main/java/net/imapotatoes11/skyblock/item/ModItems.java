@@ -26,33 +26,12 @@ public class ModItems {
 
     public static final Item AOTE=registerItem("aspect_of_the_end",new WeaponAOTE(new FabricItemSettings()));
     public static final Item AOTV=registerItem("aspect_of_the_void",
-            new WeaponAspectOfTheVoid(new FabricItemSettings(),
-                    new TooltipStats("SWORD", false, false, "EPIC", Colors.DARK_PURPLE)
-                            .add("damage", 120)
-                            .add("strength", 100)
-            ));
+            new WeaponAspectOfTheVoid(new FabricItemSettings()));
 
     public static final Item JUJU_BOW=registerItem("juju_shortbow",
-            new RangedWeaponJuju(new FabricItemSettings(),
-                    new TooltipStats("BOW", true, true, "MYTHIC", Colors.LIGHT_PURPLE)
-                            .add("damage",310)
-                            .add("strength",40)
-                            .add("cc",10)
-                            .add("cd",110)
-                            .addEnchant("Growth VII", Colors.GOLD)
-                            .addEnchant("Protection VII", Colors.GOLD)
-                            .addEnchant("Efficiency V", Colors.BLUE)
-            ));
+            new RangedWeaponJuju(new FabricItemSettings()));
     public static final Item TERMINATOR_BOW=registerItem("terminator_bow",
-            new RangedWeaponTerminator(new FabricItemSettings(),
-                    new TooltipStats("BOW", false, false, "LEGENDARY", Colors.GOLD)
-                            .add("damage",310)
-                            .add("strength",50)
-                            .add("cd",250)
-                            .add("atkspd",40)
-                            .addEnchant("Power VII", Colors.GOLD)
-                            .addEnchant("Overload VII", Colors.GOLD)
-            ));
+            new RangedWeaponTerminator(new FabricItemSettings()));
 
     public static final Item FIRE_VEIL_WAND=registerItem("fire_veil_wand",new WeaponFireVeilWand(new FabricItemSettings()));
     public static final Item FIRE_VEIL_WAND_BIG=registerItem("fire_veil_wand_big",new WeaponFireVeilWandBig(new FabricItemSettings()));

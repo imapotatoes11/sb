@@ -19,15 +19,17 @@ import java.util.Objects;
 
 public class RangedWeaponJuju extends Item {
 
-    public TooltipStats tooltipStats;
+    public TooltipStats tooltipStats = new TooltipStats("BOW", true, true, "MYTHIC", Colors.LIGHT_PURPLE)
+            .add("damage",310)
+            .add("strength",40)
+            .add("cc",10)
+            .add("cd",110)
+            .addEnchant("Growth VII", Colors.GOLD)
+            .addEnchant("Protection VII", Colors.GOLD)
+            .addEnchant("Efficiency V", Colors.BLUE);
 
     public RangedWeaponJuju(Settings settings){
         super(settings);
-    }
-
-    public RangedWeaponJuju(Settings settings, TooltipStats tooltipStats){
-        super(settings);
-        this.tooltipStats = tooltipStats;
     }
 
     @Override

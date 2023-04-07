@@ -21,11 +21,12 @@ import java.util.Objects;
 
 public class WeaponAspectOfTheVoid extends Item {
 
-    public TooltipStats tooltipStats;
+    public TooltipStats tooltipStats = new TooltipStats("SWORD", false, false, "EPIC", Colors.DARK_PURPLE)
+            .add("damage", 120)
+            .add("strength", 100);
 
-    public WeaponAspectOfTheVoid(Settings settings, TooltipStats tooltipStats1){
+    public WeaponAspectOfTheVoid(Settings settings){
         super(settings);
-        tooltipStats=tooltipStats1;
     }
 
     public static final int ETHERWARP_RANGE = 57;
