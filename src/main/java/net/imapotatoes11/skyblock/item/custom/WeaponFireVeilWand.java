@@ -26,7 +26,7 @@ public class WeaponFireVeilWand extends Item {
 
     private boolean isOn = false;
 
-    private long lastUse = Instant.now().getEpochSecond();
+//    private long lastUse = Instant.now().getEpochSecond();
 
     public TooltipStats tooltipStats = new TooltipStats("WAND", false, false, "EPIC", Colors.DARK_PURPLE)
             .add("damage",50)
@@ -39,39 +39,40 @@ public class WeaponFireVeilWand extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
 
-        if (Instant.now().getEpochSecond() - lastUse > 1){
-            isOn=!isOn;
+        if (!world.isClient()) {
+            isOn = !isOn;
+
+//            lastUse = Instant.now().getEpochSecond();
         }
-
-        lastUse = Instant.now().getEpochSecond();
-
         return super.use(world, user, hand);
     }
 
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        if (selected && isOn) {
-            // particles
-            for (int x = -6; x <= 6; x+=2) {
-                for (int y = -6; y <= 6; y+=2) {
-                    for (int z = -6; z <= 6; z+=2) {
-                        world.addParticle(
-                                ParticleTypes.FLAME,
-                                (entity.getX()) + x,
-                                (entity.getY()) + y,
-                                (entity.getZ()) + z,
-                                0, 0, 0
-                        );
+        if (!world.isClient()) {
+            if (selected && isOn) {
+                // particles
+                for (int x = -6; x <= 6; x += 2) {
+                    for (int y = -6; y <= 6; y += 2) {
+                        for (int z = -6; z <= 6; z += 2) {
+                            world.addParticle(
+                                    ParticleTypes.FLAME,
+                                    (entity.getX()) + x,
+                                    (entity.getY()) + y,
+                                    (entity.getZ()) + z,
+                                    0, 0, 0
+                            );
+                        }
                     }
                 }
+                // damage
+                List<Entity> entities = world.getOtherEntities(entity, entity.getBoundingBox().expand(5));
+                for (Entity listEntity : entities) {
+                    listEntity.damage(new DamageSource(entity.getName().getString()), 10);
+                }
+            } else if (isOn) {
+                isOn = false;
             }
-            // damage
-            List<Entity> entities = world.getOtherEntities(entity, entity.getBoundingBox().expand(5));
-            for (Entity listEntity : entities) {
-                listEntity.damage(new DamageSource(entity.getName().getString()), 10);
-            }
-        } else if (isOn) {
-            isOn = false;
         }
         super.inventoryTick(stack, world, entity, slot, selected);
     }

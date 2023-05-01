@@ -18,12 +18,12 @@ public class WeaponAOTE extends Item {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        HitResult hitResult = user.raycast(10,0.0f,false);
+        HitResult hitResult = user.raycast(10, 0.0f, false);
         switch (hitResult.getType()) {
             case BLOCK:
                 user.sendMessage(Text.of("§cThere are blocks in the way!"));
         }
-        Util.teleport(user,12);
+        Util.teleport(user, 12);
         return super.use(world, user, hand);
     }
 }

@@ -38,32 +38,33 @@ public class WeaponAspectOfTheVoid extends Item {
             HitResult hitResult = user.raycast(ETHERWARP_RANGE, 1.0F, false);
             switch (hitResult.getType()) {
                 case BLOCK:
-                    boolean b1=world.getBlockState(
+                    boolean b1 = world.getBlockState(
                             new BlockPos(
-                                    hitResult.getPos().add(new Vec3d(0,1,0))
+                                    hitResult.getPos().add(new Vec3d(0, 1, 0))
                             )
                     ).isAir();
-                    boolean b2=world.getBlockState(
+                    boolean b2 = world.getBlockState(
                             new BlockPos(
-                                    hitResult.getPos().add(new Vec3d(0,2,0))
+                                    hitResult.getPos().add(new Vec3d(0, 2, 0))
                             )
                     ).isAir();
-                    if (b1 && b2){
+                    if (b1 && b2) {
                         user.teleport(
                                 hitResult.getPos().getX(),
-                                hitResult.getPos().getY()+1,
+                                hitResult.getPos().getY() + 1,
                                 hitResult.getPos().getZ()
                         );
                     }
             }
-        } else{
-            HitResult hitResult = user.raycast(12,0.0f,false);
+        } else {
+            HitResult hitResult = user.raycast(12, 0.0f, false);
             switch (hitResult.getType()) {
                 case BLOCK:
                     user.sendMessage(Text.of("§cThere are blocks in the way!"));
             }
-            Util.teleport(user,TELEPORT_RANGE);
+            Util.teleport(user, TELEPORT_RANGE);
         }
+
         return super.use(world, user, hand);
     }
 
