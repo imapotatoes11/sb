@@ -35,6 +35,7 @@ public class ModItems {
 
     public static final Item FIRE_VEIL_WAND=registerItem("fire_veil_wand",new WeaponFireVeilWand(new FabricItemSettings()));
     public static final Item FIRE_VEIL_WAND_BIG=registerItem("fire_veil_wand_big",new WeaponFireVeilWandBig(new FabricItemSettings()));
+    public static final Item AURORA_STAFF=registerItem("aurora_staff",new WeaponAuroraStaff(new FabricItemSettings()));
 
 
     // Tools
@@ -70,7 +71,8 @@ public class ModItems {
                         GRAPPLING_HOOK,
                         SILENT_DEATH,
                         FIRE_VEIL_WAND,
-                        FIRE_VEIL_WAND_BIG
+                        FIRE_VEIL_WAND_BIG,
+                        AURORA_STAFF
                 }) {
                     entries.add(new ItemStack(entry));
                 }

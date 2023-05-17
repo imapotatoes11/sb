@@ -50,9 +50,9 @@ public class WeaponAspectOfTheVoid extends Item {
                     ).isAir();
                     if (b1 && b2){
                         user.teleport(
-                                hitResult.getPos().getX(),
-                                hitResult.getPos().getY()+1,
-                                hitResult.getPos().getZ()
+                                ((int)hitResult.getPos().getX()) + 0.5d,
+                                hitResult.getPos().getY()+0.75,
+                                ((int)hitResult.getPos().getZ()) + 0.5d
                         );
                     }
             }
