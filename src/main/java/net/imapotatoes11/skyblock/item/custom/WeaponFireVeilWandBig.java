@@ -18,7 +18,7 @@ public class WeaponFireVeilWandBig extends Item {
 
     private boolean isOn = false;
 
-    private long lastUse = Instant.now().getEpochSecond();
+//    private long lastUse = Instant.now().getEpochSecond();
 
     public WeaponFireVeilWandBig(Settings settings){
         super(settings);
@@ -27,12 +27,11 @@ public class WeaponFireVeilWandBig extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
 
-        if (Instant.now().getEpochSecond() - lastUse > 1){
-            isOn=!isOn;
+        if (!world.isClient()) {
+            isOn = !isOn;
+
+//            lastUse = Instant.now().getEpochSecond();
         }
-
-        lastUse = Instant.now().getEpochSecond();
-
         return super.use(world, user, hand);
     }
 

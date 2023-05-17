@@ -34,21 +34,23 @@ public class RangedWeaponJuju extends Item {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        ArrowEntity arrowEntity = new ArrowEntity(EntityType.ARROW, world);
-        arrowEntity.teleport(
-                user.getX(),
-                user.getY() + 1.6,
-                user.getZ()
-        );
+        if (!world.isClient()) {
+            ArrowEntity arrowEntity = new ArrowEntity(EntityType.ARROW, world);
+            arrowEntity.teleport(
+                    user.getX(),
+                    user.getY() + 1.6,
+                    user.getZ()
+            );
 
-        // Can mess with these two in the future
-        arrowEntity.setNoGravity(false);
-        arrowEntity.setNoClip(false);
+            // Can mess with these two in the future
+            arrowEntity.setNoGravity(false);
+            arrowEntity.setNoClip(false);
 
-        arrowEntity.setVelocity(0,0,0);
-        arrowEntity.addVelocity(user.getRotationVector().multiply(5));
+            arrowEntity.setVelocity(0, 0, 0);
+            arrowEntity.addVelocity(user.getRotationVector().multiply(5));
 
-        world.spawnEntity(arrowEntity);
+            world.spawnEntity(arrowEntity);
+        }
         return super.use(world, user, hand);
     }
 

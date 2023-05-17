@@ -28,33 +28,38 @@ public class WeaponHyperion extends Item {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+
         HitResult hitResult = user.raycast(
                 10,
                 0.0f,
                 false
         );
-        if(hitResult.getType()== HitResult.Type.BLOCK)
-            user.sendMessage(Text.of("§cThere are blocks in the way!"));
+//        if (hitResult.getType() == HitResult.Type.BLOCK)
+//            user.sendMessage(Text.of("§cThere are blocks in the way!"));
 
-        Util.teleport(user,10);
+        Util.teleport(user, 10);
 
-        world.createExplosion(
-                user,
-                user.getX(),
-                user.getY(),
-                user.getZ(),
-                10.0f,
-                World.ExplosionSourceType.NONE
-        );
+        if (!world.isClient()) {
+            world.createExplosion(
+                    user,
+                    user.getX(),
+                    user.getY(),
+                    user.getZ(),
+                    10.0f,
+                    World.ExplosionSourceType.NONE
+            );
+            if (hitResult.getType() == HitResult.Type.BLOCK)
+                user.sendMessage(Text.of("§cThere are blocks in the way!"));
+        }
         user.playSound(
                 SoundEvents.ENTITY_ZOMBIE_VILLAGER_CURE,
                 SoundCategory.PLAYERS,
                 1F,
                 1.5F
         );
-        MyStatusEffect resistance=new MyStatusEffect(StatusEffects.RESISTANCE,200,3);
-        MyStatusEffect absorption=new MyStatusEffect(StatusEffects.ABSORPTION,200,4);
-        MyStatusEffect saturation=new MyStatusEffect(StatusEffects.SATURATION,200,5);
+        MyStatusEffect resistance = new MyStatusEffect(StatusEffects.RESISTANCE, 200, 3);
+        MyStatusEffect absorption = new MyStatusEffect(StatusEffects.ABSORPTION, 200, 4);
+        MyStatusEffect saturation = new MyStatusEffect(StatusEffects.SATURATION, 200, 5);
         user.addStatusEffect(absorption);
         user.addStatusEffect(resistance);
         user.addStatusEffect(saturation);
