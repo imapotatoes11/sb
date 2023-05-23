@@ -26,15 +26,26 @@ public class WeaponAuroraStaff extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         HitResult hitResult = user.raycast(100d, 0.0f, false);
-        if (hitResult.getType() == HitResult.Type.ENTITY){
-            user.sendMessage(Text.of("is this even getting called?"), true);
-            List entityList = new ArrayList<EntityType>();
-            entityList.add(EntityType.PLAYER);
-            Entity closestEntity = world.getClosestEntity(LivingEntity.class, (TargetPredicate)EntityPredicates.VALID_ENTITY, null, hitResult.getPos().getX(), hitResult.getPos().getY(), hitResult.getPos().getZ(), new Box(hitResult.getPos().getX() - 10, hitResult.getPos().getY() - 10, hitResult.getPos().getZ() - 10, hitResult.getPos().getX() + 10, hitResult.getPos().getY() + 10, hitResult.getPos().getZ() + 10));
-            user.sendMessage(Text.of(closestEntity.getType().getName().getString()), true);
-            try {closestEntity.kill();}
-            catch (NullPointerException ignored) {}
+        if (hitResult.getType() == HitResult.Type.ENTITY ||
+                hitResult.getType() == HitResult.Type.BLOCK){
+//            user.sendMessage(Text.of("is this even getting called?"), true);
+//            List entityList = new ArrayList<EntityType>();
+//            entityList.add(EntityType.PLAYER);
+//            Entity closestEntity = world.getClosestEntity(LivingEntity.class, (TargetPredicate)EntityPredicates.VALID_ENTITY, null, hitResult.getPos().getX(), hitResult.getPos().getY(), hitResult.getPos().getZ(), new Box(hitResult.getPos().getX() - 10, hitResult.getPos().getY() - 10, hitResult.getPos().getZ() - 10, hitResult.getPos().getX() + 10, hitResult.getPos().getY() + 10, hitResult.getPos().getZ() + 10));
+//            user.sendMessage(Text.of(closestEntity.getType().getName().getString()), true);
+//            try {closestEntity.kill();}
+//            catch (NullPointerException ignored) {}
+            // im lazy so im just gonna explode here
+            world.createExplosion(
+                    user,
+                    hitResult.getPos().getX(),
+                    hitResult.getPos().getY(),
+                    hitResult.getPos().getZ(),
+                    10.0f,
+                    World.ExplosionSourceType.NONE
+            );
         }
         return super.use(world, user, hand);
     }
+
 }
