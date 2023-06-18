@@ -4,6 +4,9 @@ import net.imapotatoes11.skyblock.item.custom.util.Colors;
 import net.imapotatoes11.skyblock.item.custom.util.TooltipStats;
 import net.imapotatoes11.skyblock.item.custom.util.Util;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -56,6 +59,8 @@ public class WeaponAspectOfTheVoid extends Item {
                         );
                     }
             }
+            AotvEffect speed = new AotvEffect(StatusEffects.SPEED, 100, 1);
+            user.addStatusEffect(speed);
         } else{
             HitResult hitResult = user.raycast(12,0.0f,false);
             switch (hitResult.getType()) {
@@ -75,7 +80,7 @@ public class WeaponAspectOfTheVoid extends Item {
             if (Objects.equals(line,"add_details_here")){
                 // add item info here
                 tooltip.add(Text.of("§"+ Colors.GOLD+"Ability: Instant Transmission "+"§"+Colors.YELLOW+"RIGHT CLICK"));
-                tooltip.add(Text.of("§"+Colors.GRAY+"Teleport §"+Colors.GREEN+"8 blocks §"+Colors.GRAY+"ahead of"));
+                tooltip.add(Text.of("§"+Colors.GRAY+"Teleport §"+Colors.GREEN+"12 blocks §"+Colors.GRAY+"ahead of"));
                 tooltip.add(Text.of("§"+Colors.GRAY+"you and gain +50 §"+Colors.WHITE+"Speed"));
                 tooltip.add(Text.of("§"+Colors.GRAY+"for §"+Colors.GREEN+"3 seconds§"+Colors.GRAY+"."));
                 tooltip.add(Text.of(TooltipStats.manaCost(0)));
@@ -91,5 +96,15 @@ public class WeaponAspectOfTheVoid extends Item {
             tooltip.add(Text.of(line));
         }
         super.appendTooltip(stack, world, tooltip, context);
+    }
+}
+
+class AotvEffect extends StatusEffectInstance {
+    public AotvEffect(
+            StatusEffect type,
+            int duration,
+            int amplifier
+    ){
+        super(type,duration,amplifier);
     }
 }

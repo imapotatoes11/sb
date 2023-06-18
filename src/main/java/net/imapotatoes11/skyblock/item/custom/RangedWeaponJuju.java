@@ -24,9 +24,9 @@ public class RangedWeaponJuju extends Item {
             .add("strength",40)
             .add("cc",10)
             .add("cd",110)
-            .addEnchant("Growth VII", Colors.GOLD)
-            .addEnchant("Protection VII", Colors.GOLD)
-            .addEnchant("Efficiency V", Colors.BLUE);
+            .addEnchant("Power VII", Colors.GOLD)
+            .addEnchant("Overload V", Colors.GOLD)
+            .addEnchant("Critical VII", Colors.GOLD);
 
     public RangedWeaponJuju(Settings settings){
         super(settings);
