@@ -17,7 +17,7 @@ public class WeaponRogueSword extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if (!world.isClient()) {
-            user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 30, 2));
+            user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 30, 5));
         }
         return super.use(world, user, hand);
     }

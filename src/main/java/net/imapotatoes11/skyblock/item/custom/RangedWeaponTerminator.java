@@ -25,7 +25,8 @@ public class RangedWeaponTerminator extends Item {
             .add("cd",250)
             .add("atkspd",40)
             .addEnchant("Power VII", Colors.GOLD)
-            .addEnchant("Overload VII", Colors.GOLD);
+            .addEnchant("Overload MCMLXXXIV", Colors.GOLD)
+            .addEnchant("Efficiency MMLXXVI", Colors.GOLD);
     public RangedWeaponTerminator(Settings settings){
         super(settings);
     }

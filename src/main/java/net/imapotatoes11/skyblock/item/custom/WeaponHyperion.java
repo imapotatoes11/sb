@@ -80,7 +80,7 @@ public class WeaponHyperion extends Item {
         tooltip.add(Text.translatable("§7Intelligence: §a+2,547.917 §9(Heroic +125)"));
         tooltip.add(Text.translatable("§7Ferocity: §a+52.5"));
         tooltip.add(Text.translatable(""));
-        tooltip.add(Text.translatable("§dChimera V, §5Cleave VI"));
+        tooltip.add(Text.translatable("§dChimera VII, §5Cleave VI"));
         tooltip.add(Text.translatable("§6Critical VII, §5Cubism VI"));
         tooltip.add(Text.translatable("§6Dragon Hunter V, Ender Slayer VII"));
         tooltip.add(Text.translatable("§5Execute VI, Experience IV"));
